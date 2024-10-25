@@ -28,11 +28,12 @@ const Login = () => {
         email, // Ensure this matches what your backend expects
         password,
       });
-
+      // console.log(response.data);
       // Check the response structure based on your API
       if (response.data.success) {
-        dispatch(loginSuccess({ username: response.data.username })); // Adjust if using email
-        message.success(`Welcome, ${response.data.username}!`);
+        dispatch(loginSuccess({ username: response.data.data.user.name })); // Adjust if using email
+console.log(response.data);
+        message.success(`Welcome, ${response.data.data.user.name}!`);
         navigate('/dashboard'); // Navigate to the desired page
       } else {
         message.error(response.data.message || 'Invalid email or password');
