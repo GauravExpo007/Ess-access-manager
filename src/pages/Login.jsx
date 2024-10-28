@@ -24,15 +24,19 @@ const Login = () => {
     setLoading(true);
 
     try {
-      const response = await axios.post('http://192.168.29.225:4009/api/v1/user/login', {
+      const response = await axios.post('api/v1/user/login', {
         email, // Ensure this matches what your backend expects
         password,
-      });
+      },
+      {
+        withCredentials: true,
+      }
+    );
       // console.log(response.data);
       // Check the response structure based on your API
       if (response.data.success) {
-        dispatch(loginSuccess({ username: response.data.data.user.name })); // Adjust if using email
-console.log(response.data);
+        dispatch(loginSuccess({ name: response.data.data.user.name })); // Adjust if using email
+// console.log(response.data);
         message.success(`Welcome, ${response.data.data.user.name}!`);
         navigate('/dashboard'); // Navigate to the desired page
       } else {

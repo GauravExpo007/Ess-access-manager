@@ -1,19 +1,17 @@
 import { Form, Input, Button, message } from 'antd';
 import { Link, useNavigate } from 'react-router-dom';
-// import { useDispatch } from 'react-redux'; // Import dispatch from Redux
 import axios from 'axios';
-// import { loginSuccess } from '../features/authSlice'; // Import action from authSlice
 
 const Signup = () => {
   const [form] = Form.useForm();
   const navigate = useNavigate();
-  // const dispatch = useDispatch(); // Get Redux dispatch
+
 
   const handleSignup = async (values) => {
     const { name, email, password } = values;
 
     try {
-      const response = await axios.post('http://192.168.29.225:4009/api/v1/user/register', {
+      const response = await axios.post('api/v1/user/register', {
         name,
         email,
         password,
@@ -22,10 +20,6 @@ const Signup = () => {
       if (response.status === 201) {
         message.success('Signup successful! Redirecting to Login Page...');
 
-        // Dispatch loginSuccess to store user info in Redux
-        //dispatch(loginSuccess(response.data));
-
-        // Redirect to dashboard or another page after signup
         navigate('/login');
       } else {
         throw new Error('Signup failed');
