@@ -5,7 +5,7 @@ import ForgotPassword from './pages/ForgotPassword'; // Ensure the file name is 
 import Navbar from './components/Navbar';
 import Dashboard from './pages/Dashboard'; 
 import { useSelector } from 'react-redux';
-import AddSite from './pages/AddSite';
+// import AddSite from './pages/AddSite';
 
 // ProtectedRoute component checks if the user is authenticated
 // eslint-disable-next-line react/prop-types
@@ -35,7 +35,7 @@ function App() {
         
         {/* Dashboard route, protected by authentication */}
         <Route path="/dashboard" element={<ProtectedRoute><Dashboard /></ProtectedRoute>} />
-        <Route path="/add-site" element={<AddSite />} />
+        {/* <Route path="/add-site" element={<AddSite />} /> */}
         
         {/* Basic 404 page for undefined routes */}
         <Route path="*" element={<h2>404 Not Found</h2>} />
